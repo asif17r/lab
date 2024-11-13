@@ -1,0 +1,56 @@
+#do for all switch
+en
+show vlan  brief
+configure terminal
+vl
+vlan 10
+vl 20 
+vl 30
+
+
+vl 
+vlan 10
+name students
+
+vl 20
+name fac
+
+vl 30 
+name guest
+
+
+#port edit_do for all port
+interface fastEthernet #portId
+switchport mode access
+switchport access vlan 10
+#use vlanberid to check
+
+
+#trunk ports switch
+interface range fastEthernet 0/1-3
+switchport mode trunk
+show interfaces trunk
+
+#router subinterfaces
+enable 
+conf t
+interface gigabitEthernet 0/0.10
+encapsulation dot1Q #vlanID
+ip address #gateway_of_theVlan.1 #subnetmask
+exit
+
+enable 
+conf t
+interface gigabitEthernet 0/0.20
+encapsulation dot1Q #vlanID
+ip address #gateway_of_theVlan.1 #subnetmask
+exit
+
+ip interface brief
+interface gigabitEthernet 0/0
+no shutdown
+
+#config of router connected switch
+interface gigabitEthernet 0/1
+switchport mode trunk
+show interfaces trunk

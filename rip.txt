@@ -1,0 +1,12 @@
+en 
+conf t
+int #port1
+ip address #ipofthatport #subnet
+no shut exit
+
+#do this for all ports
+
+router rip
+network #connectedNetworkid1
+network #connectedNetworkid2
+exit
